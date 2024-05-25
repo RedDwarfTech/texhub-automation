@@ -19,8 +19,6 @@ pytest src/case/project/base/test_project.py
 
 add the tracing code in context:
 
-
-
 ```python
 pytest.set_trace()
 ```
@@ -28,6 +26,20 @@ pytest.set_trace()
 
 
 then you can print any variable in the code context.
+
+
+
+#### Generate test report
+
+use this command to run test and generate test report.
+
+
+
+```bash
+pytest --html=report.html --self-contained-html
+```
+
+
 
 
 

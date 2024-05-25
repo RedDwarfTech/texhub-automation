@@ -19,7 +19,6 @@ class TestProject:
         response = session.get(login_url, headers = headers)
         if response.status_code == 200:
             pprint.pprint(response.json())
-            pytest.set_trace()
             print("success")
         else:
             pprint.pprint(response.json())
