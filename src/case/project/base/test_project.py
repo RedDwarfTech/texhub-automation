@@ -1,3 +1,4 @@
+import pprint
 import sqlite3
 import pytest
 import requests
@@ -11,15 +12,17 @@ class TestProject:
         login_url = config.get("BASE_URL") + '/tex/project/list'
         session = requests.Session()
         access_token = self.get_config('access_token')
-        pytest.set_trace()
         headers = {
             'Content-Type': 'application/json',
-            'Authorization': access_token
+            'Authorization': 'Bearer ' + access_token
         }
         response = session.get(login_url, headers = headers)
         if response.status_code == 200:
+            pprint.pprint(response.json())
+            pytest.set_trace()
             print("success")
         else:
+            pprint.pprint(response.json())
             print("failed")
 
     def get_config(self, key: str):
@@ -27,7 +30,8 @@ class TestProject:
         c = conn.cursor()  
         c.execute("SELECT * FROM texhub_config where name = '" + key +"'")
         result = c.fetchall()
-        return result['value']
+        
+        return result[0][1]
 
 
 

@@ -39,6 +39,10 @@ class TestUser:
             refresh_token = login_resp['result']['refreshToken']
             conn = sqlite3.connect('texhub.db')
             c = conn.cursor()
+            sql_text_1 = '''CREATE TABLE texhub_config
+           (name TEXT,
+            value TEXT);'''
+            c.execute(sql_text_1)
             conn.commit()
             c.execute("INSERT OR REPLACE INTO texhub_config VALUES ('access_token', '" + access_token +"')")
             c.execute("INSERT OR REPLACE INTO texhub_config VALUES ('refresh_token', '" + refresh_token +"')")
