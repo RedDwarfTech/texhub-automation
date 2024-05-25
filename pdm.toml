@@ -1,0 +1,16 @@
+[pypi]
+verify_ssl = true
+
+# https://github.com/pdm-project/pdm/discussions/2406
+[tool.pdm.resolution]
+respect-source-order = true
+
+[[tool.pdm.source]]
+name = "pypi"
+url = "http://pypi.org/simple"
+verify_ssl = true
+
+[[tool.pdm.source]]
+name = "fallback"
+url = "http://pypi.org/simple"
+verify_ssl = true

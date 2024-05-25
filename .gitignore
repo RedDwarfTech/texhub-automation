@@ -161,3 +161,8 @@ cython_debug/
 
 .DS_Store
 .vscode
+config.ini
+.env
+.idea/*
+.idea
+*.db
