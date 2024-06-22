@@ -8,6 +8,22 @@ config = dotenv_values('.env')
 
 class TestProject:
 
+    def test_proj_interval(self):
+        login_url = config.get("BASE_URL") + '/tex/project/list'
+        session = requests.Session()
+        access_token = self.get_config('access_token')
+        headers = {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + access_token
+        }
+        response = session.get(login_url, headers = headers)
+        if response.status_code == 200:
+            pprint.pprint(response.json())
+            print("success")
+        else:
+            pprint.pprint(response.json())
+            print("failed")
+
     def test_project_list(self):
         login_url = config.get("BASE_URL") + '/tex/project/list'
         session = requests.Session()
